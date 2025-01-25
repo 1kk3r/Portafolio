@@ -28,16 +28,16 @@ export default function Home() {
   }, [])
 
   return (
-<div className="min-h-screen bg-gray-50 text-gray-800">
-  <div className="absolute inset-0 bg-[url('/path-to-your-pattern.png')] opacity-10"></div>
-  <Header isScrolled={isScrolled} />
-  <Sidebar />
-  <motion.main
-    initial={{ opacity: 0, y: 20 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.5 }}
-    className="relative max-w-screen-xl mx-auto space-y-28 md:space-y-36 pt-24 xl:px-0 px-6"
-  >
+    <div className="min-h-screen bg-gray-50 text-gray-800">
+      <div className="absolute inset-0 bg-[url('/path-to-your-pattern.png')] opacity-10"></div>
+      <Header isScrolled={isScrolled} />
+      <Sidebar />
+      <motion.main
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="relative max-w-screen-xl mx-auto space-y-28 md:space-y-36 pt-24 xl:px-0 px-6"
+      >
         <AboutMe />
         <Experience />
         <Projects />
@@ -111,25 +111,35 @@ function Sidebar() {
 function AboutMe() {
   return (
     <section id="Sobre mi" className="space-y-8 pt-20 -mt-20">
-      <div className="grid gap-3 max-w-2xl">
-        <a
-          href="https://www.linkedin.com/in/iker-farid-castro-sanchez-830259240/"
-          className="text-sm text-white bg-blue-600 px-3 py-1 rounded-full w-fit hover:bg-blue-700 hover:scale-105 transition"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          ¡Listo para trabajar! 🚀
-        </a>
-        <h1 className="text-4xl font-bold text-gray-800">Iker Farid Castro Sánchez</h1>
-
-        <p className="text-xl text-gray-600">
-          <span className="text-sky-500 font-semibold">
-            Desarrollador Full Stack  Egresado de la Carrera Ingenieria en Informática.
-          </span>
-          <span className="text-white">.</span>
-          Capacitado, comprometido y con un gran interés
-          por adquirir cada vez más conocimientos y habilidades.
-        </p>
+      <div className="grid gap-3 max-w-2xl md:max-w-full md:flex md:items-center md:gap-6">
+        <div className="flex-1 max-w-2xl">
+          <a
+            href="https://www.linkedin.com/in/iker-farid-castro-sanchez-830259240/"
+            className="text-sm text-white bg-blue-600 px-3 py-1 rounded-full w-fit hover:bg-blue-700 hover:scale-105 transition"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            ¡Listo para trabajar! 🚀
+          </a>
+          <h1 className="text-4xl font-bold text-gray-800 mt-2">
+            Iker Farid Castro Sánchez
+          </h1>
+          <p className="text-xl text-gray-600 mt-2">
+            <span className="text-sky-500 font-semibold">
+              Desarrollador Full Stack Egresado de la Carrera Ingeniería en Informática.
+            </span>
+            Capacitado, comprometido y con un gran interés por adquirir cada vez más conocimientos y habilidades.
+          </p>
+        </div>
+        <div className="flex-shrink-0 ml-44">
+          <Image
+            src="/images/profile.png"
+            alt="Foto de perfil"
+            width={200}
+            height={200}
+            className="rounded-full shadow-lg"
+          />
+        </div>
       </div>
       <div className="grid gap-6 scroll-mt-20">
         <h3 className="text-3xl font-bold flex items-center gap-3 text-gray-800">
@@ -180,7 +190,6 @@ function AboutMe() {
             en un entorno dinámico, donde pueda seguir aprendiendo y aportando con creatividad y dedicación a este mundo gigantesco de TI.
           </blockquote>
         </article>
-
       </div>
     </section>
   )
@@ -243,6 +252,28 @@ function ExperienceItem({ date, title, company, description, skills }) {
 }
 
 function Projects() {
+  const images = [
+    "/images/rms/rms.png",
+    "/images/rms/rms1.png",
+    "/images/rms/rms2.png",
+    "/images/rms/rms3.png",
+    "/images/rms/rms4.png",
+    "/images/rms/rms5.png",
+    "/images/rms/rms6.png",
+    "/images/rms/rms7.png",
+    "/images/rms/rms8.png",
+    "/images/rms/rms9.png",
+    "/images/rms/rms10.png"
+  ]; // Agrega las rutas de tus imágenes
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, 2000); // Cambia cada 2 segundos
+
+    return () => clearInterval(interval); // Limpia el intervalo al desmontar el componente
+  }, [images.length]);
   return (
     <section id="proyectos" className="grid gap-8 scroll-mt-20">
       <h3 className="text-3xl font-bold mb-12 flex items-center gap-3 text-gray-800">
@@ -281,12 +312,12 @@ function Projects() {
             </div>
           </div>
 
-          <div>
+          <div className="w-full max-w-lg mx-auto rounded-lg shadow-lg overflow-hidden">
             <img
               loading="lazy"
-              className="w-full max-w-lg mx-auto rounded-lg shadow-lg"
-              src="https://th.bing.com/th/id/OIP.EgRNfDtWNui_MWFkeVDDpgHaEJ?rs=1&pid=ImgDetMain"
-              alt="Real Stock Manager"
+              className="w-full"
+              src={images[currentIndex]}
+              alt={`Imagen ${currentIndex + 1}`}
             />
           </div>
         </article>
@@ -297,7 +328,7 @@ function Projects() {
 
 function Certificates() {
   return (
-    <section id="certificados" className="grid gap-6 scroll-mt-20">
+    <section id="certificados" className="scroll-mt-20">
       <h3 className="text-3xl font-bold mb-12 flex items-center gap-3 text-gray-800">
         <ScrollText size={38} className="text-blue-600" />
         Certificados
@@ -306,12 +337,87 @@ function Certificates() {
         <CertificadosItem
           title={
             <a
-              href="https://drive.google.com/file/d/1Uh8F_wM5DrKe8nyEKFnQQJKA72ticFsu/view"
+              href="https://drive.google.com/file/d/15p2UahDHCPu0pMDe_WpHHL_rfcMsLd6f/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
               className="text-green-500 hover:text-green-700"
             >
               Titulo Profesional Ingeniero en Informática.
+            </a>
+          }
+          description="Instituto Profesional INACAP."
+        />
+      </div>
+      <div className="space-y-12">
+        <CertificadosItem
+          title={
+            <a
+              href="https://drive.google.com/file/d/1WYXQwRJ2qUHTgSQt3yodWnKXTecxfadQ/view?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-green-500 hover:text-green-700"
+            >
+              Titulo Técnico Analista Programador.
+            </a>
+          }
+          description="Instituto Profesional INACAP."
+        />
+      </div>
+      <div className="space-y-12">
+        <CertificadosItem
+          title={
+            <a
+              href="https://drive.google.com/file/d/12yMfMKmL0CsPgwxpEaB0cksRK6gtz-J9/view?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-green-500 hover:text-green-700"
+            >
+              Arquitectura Cloud.
+            </a>
+          }
+          description="Instituto Profesional INACAP."
+        />
+      </div>
+      <div className="space-y-12">
+        <CertificadosItem
+          title={
+            <a
+              href="https://drive.google.com/file/d/1Jc3v8evedIQrKDO3Y1pCiit1zt_jv7BT/view?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-green-500 hover:text-green-700"
+            >
+              Desarrollo Full-Stack.
+            </a>
+          }
+          description="Instituto Profesional INACAP."
+        />
+      </div>
+      <div className="space-y-12">
+        <CertificadosItem
+          title={
+            <a
+              href="https://drive.google.com/file/d/1629qkt8qjTVZte9ScymQzpf1ERIVX-Ju/view?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-green-500 hover:text-green-700"
+            >
+              Diseño y Gestión de Base de Datos SQL y NoSQL.
+            </a>
+          }
+          description="Instituto Profesional INACAP."
+        />
+      </div>
+      <div className="space-y-12">
+        <CertificadosItem
+          title={
+            <a
+              href="https://drive.google.com/file/d/1J4MOAQHU8yR264-UasaWkOOJxu3q0s9i/view?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-green-500 hover:text-green-700"
+            >
+              Diseño Ágil de Sitemas SCRUM.
             </a>
           }
           description="Instituto Profesional INACAP."
@@ -331,7 +437,7 @@ function CertificadosItem({ title, description }) {
           {title}
           <ChevronRight className="h-4 w-4 text-green-600 transition-transform group-hover:translate-x-1" />
         </h3>
-        <h5 className="text-lg text-gray-600 mb-3">{description}</h5>
+        <span className="text-lg text-gray-600">{description}</span>
       </div>
     </div>
   )
