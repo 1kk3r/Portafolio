@@ -133,7 +133,7 @@ function AboutMe() {
         </div>
         <div className="flex-shrink-0 ml-44">
           <Image
-            src="/images/profile.png"
+            src="images/profile.png"
             alt="Foto de perfil"
             width={200}
             height={200}
@@ -253,17 +253,17 @@ function ExperienceItem({ date, title, company, description, skills }) {
 
 function Projects() {
   const images = [
-    "/images/rms/rms.png",
-    "/images/rms/rms1.png",
-    "/images/rms/rms2.png",
-    "/images/rms/rms3.png",
-    "/images/rms/rms4.png",
-    "/images/rms/rms5.png",
-    "/images/rms/rms6.png",
-    "/images/rms/rms7.png",
-    "/images/rms/rms8.png",
-    "/images/rms/rms9.png",
-    "/images/rms/rms10.png"
+    "images/rms/rms.png",
+    "images/rms/rms1.png",
+    "images/rms/rms2.png",
+    "images/rms/rms3.png",
+    "images/rms/rms4.png",
+    "images/rms/rms5.png",
+    "images/rms/rms6.png",
+    "images/rms/rms7.png",
+    "images/rms/rms8.png",
+    "images/rms/rms9.png",
+    "images/rms/rms10.png"
   ]; // Agrega las rutas de tus imágenes
   const [currentIndex, setCurrentIndex] = useState(0);
 
