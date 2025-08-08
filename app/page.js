@@ -52,14 +52,15 @@ export default function Home() {
 function Header({ isScrolled }) {
   return (
     <motion.header
-      className={`sticky top-0 w-full z-10 transition-all duration-300 ${isScrolled ? "bg-white/80 backdrop-blur-sm shadow-sm" : "bg-transparent"
-        }`}
+      className={`sticky top-0 w-full z-10 transition-all duration-300 ${
+        isScrolled ? "bg-white/80 backdrop-blur-sm shadow-sm" : "bg-transparent"
+      }`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
     >
       <nav className="container mx-auto px-6 py-4">
-        <ul className="max-w-screen-md mx-auto flex items-center justify-center gap-8">
+        <ul className="hidden md:flex max-w-screen-md mx-auto items-center justify-center gap-8">
           {["Sobre mi", "experiencia", "proyectos", "certificados", "skills"].map((item) => (
             <li key={item}>
               <a
@@ -97,7 +98,7 @@ function Sidebar() {
         <Github size={24} />
       </a>
       <a
-        href="https://www.linkedin.com/in/iker-farid-castro-sanchez-830259240/"
+        href="https://www.linkedin.com/in/iker-farid-castro-s%C3%A1nchez-830259240/"
         className="text-gray-600 hover:text-blue-600 transition-colors bg-white p-2 rounded-full shadow-md"
         target="_blank"
         rel="noopener noreferrer"
@@ -114,7 +115,7 @@ function AboutMe() {
       <div className="grid gap-3 max-w-2xl md:max-w-full md:flex md:items-center md:gap-6">
         <div className="flex-1 max-w-2xl">
           <a
-            href="https://www.linkedin.com/in/iker-farid-castro-sanchez-830259240/"
+            href="https://www.linkedin.com/in/iker-farid-castro-s%C3%A1nchez-830259240/"
             className="text-sm text-white bg-blue-600 px-3 py-1 rounded-full w-fit hover:bg-blue-700 hover:scale-105 transition"
             target="_blank"
             rel="noopener noreferrer"
@@ -126,14 +127,14 @@ function AboutMe() {
           </h1>
           <p className="text-xl text-gray-600 mt-2">
             <span className="text-sky-500 font-semibold">
-              Desarrollador Full Stack Egresado de la Carrera Ingeniería en Informática.
+              Egresado de la Carrera Ingeniería en Informática.
             </span>
             Capacitado, comprometido y con un gran interés por adquirir cada vez más conocimientos y habilidades.
           </p>
         </div>
         <div className="flex-shrink-0 ml-44">
           <Image
-            src="images/profile.png"
+            src="/images/profile.png"
             alt="Foto de perfil"
             width={200}
             height={200}
@@ -151,10 +152,10 @@ function AboutMe() {
             Soy Iker Castro Sánchez,
             <span className="text-white">.</span>
             <span className="text-sky-500 font-semibold">
-              Ingeniero en Informática especializado en desarrollo web y de aplicaciones,
+              Ingeniero en Informática especializado en desarrollo Full-Stack y analisis de datos
             </span>
             <span className="text-white">.</span>
-            con experiencia en análisis de datos. Tengo 22 años y resido en Santiago de Chile.
+            con experiencia en serviciosy herramientas en la nube (Azure, AWS, OCI) y conocimiento en el ecosistema de Microsoft (PowerPlatform, PowerBI, PowerAutomate).
           </p>
           <p>
             <span className="text-sky-500 font-semibold">
@@ -202,9 +203,45 @@ function Experience() {
         <Briefcase size={38} className="text-blue-600" />
         Experiencia
       </h3>
-      <div className="space-y-12">
+      <div className="space-y-10">
         <ExperienceItem
-          date="Junio 2023 - Enero 2024"
+          date="Marzo 2025 - Presente"
+          title={
+            <a
+              href="https://www.pwc.com/cl/es.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-600 hover:text-blue-900"
+            >
+              Analyst
+            </a>
+          }
+          company="PriceWaterhouseCoopers (PwC)"
+          description="Analista TI/Data en el área de Ingeniería, participando en la implementación y optimización de soluciones tecnológicas para la cartera de clientes de la firma, colaborando estrechamente con equipos multidisciplinarios para analizar y mejorar procesos tanto internos como externos, facilitando la integración de sistemas innovadores que impulsan la transformación digital."
+          skills={["PowerPlatform", "PowerBI", "PowerAutomate", "Python", "MySQL", "PostgreSQL", "Azure", "AWS", "OCI", "Google Cloud", "JavaScript", "NextJS", "NodeJS", "ReactJS", "TailwindCSS"]}
+        />
+      </div>
+      <div className="space-y-10">
+        <ExperienceItem
+          date="Septiembre 2024 - Enero 2025"
+          title={
+            <a
+              href="https://www.koywe.com/es/home"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-600 hover:text-blue-900"
+            >
+              Full Stack Engineer
+            </a>
+          }
+          company="FACTO - Koywe"
+          description="Encargado del desarrollo de la plataforma web e integración de APIs, brindando soporte completo en frontend y backend. Enfocado en la implementación de funcionalidades personalizadas orientadas a mejorar la experiencia del usuario y optimizar la eficiencia operativa. Comprometido con buenas prácticas de desarrollo, escalabilidad del sistema y mejora continua."
+          skills={["PHP", "jQuery", "XML", "MySQL", "Google Analytics", "TailwindCSS", "NextJS", "NodeJS", "Supabase", "AWS", "Python"]}
+        />
+      </div>
+      <div className="space-y-6">
+        <ExperienceItem
+          date="Junio 2024 - Agosto 2024"
           title={
             <a
               href="https://facto.cl/"
@@ -212,11 +249,11 @@ function Experience() {
               rel="noopener noreferrer"
               className="text-blue-600 hover:text-blue-900"
             >
-              DevOps Trainee
+              Software Engineer Internship
             </a>
           }
-          company="FACTO.cl"
-          description="Responsable del mantenimiento, corrección de errores e implementación de nuevas funcionalidades en un ERP, basado en el análisis de requerimientos, la documentación de soluciones y su desarrollo correspondiente."
+          company="FACTO"
+          description="Durante mi práctica profesional, apoyé el desarrollo y mantenimiento de la plataforma web, trabajando en frontend y backend. Contribuí a la implementación de funcionalidades para mejorar la experiencia del usuario y optimizar procesos internos. También participé en la integración de sistemas de contabilidad, gestión de inventario y servicios cloud."
           skills={["PHP", "jQuery", "XML", "MySQL", "Google Analytics"]}
         />
       </div>
@@ -329,7 +366,7 @@ function Projects() {
 function Certificates() {
   return (
     <section id="certificados" className="scroll-mt-20">
-      <h3 className="text-3xl font-bold mb-12 flex items-center gap-3 text-gray-800">
+      <h3 className="text-3xl font-bold mb-12 flex items-center gap-6 text-gray-800">
         <ScrollText size={38} className="text-blue-600" />
         Certificados
       </h3>
@@ -361,6 +398,51 @@ function Certificates() {
             </a>
           }
           description="Instituto Profesional INACAP."
+        />
+      </div>
+      <div className="space-y-12">
+        <CertificadosItem
+          title={
+            <a
+              href="https://drive.google.com/file/d/1-_wlnMapSpGwK1meckmFhs2_ZHgDQ6F8/view?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-green-500 hover:text-green-700"
+            >
+              Titulo Técnico en Telecomunicaciones.
+            </a>
+          }
+          description="Liceo Técnico Eliodoro García Zegers."
+        />
+      </div>
+            <div className="space-y-12">
+        <CertificadosItem
+          title={
+            <a
+              href="https://drive.google.com/file/d/1dmz4sRMcXB0OufjnH5fEXNKQwX9L6-sQ/view?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-green-500 hover:text-green-700"
+            >
+              Certificado Oracle AI Foundations Associate.
+            </a>
+          }
+          description="ORACLE"
+        />
+      </div>
+            <div className="space-y-12">
+        <CertificadosItem
+          title={
+            <a
+              href="https://drive.google.com/file/d/17D5KxP_ot2UbyeyHHR6OjD9PgqKOBCKS/view?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-green-500 hover:text-green-700"
+            >
+              Certificado Oracle Foundations Associate.
+            </a>
+          }
+          description="ORACLE"
         />
       </div>
       <div className="space-y-12">
@@ -448,7 +530,9 @@ function Skills() {
     { name: "HTML", icon: "icons/html.svg" },
     { name: "CSS", icon: "icons/css.svg" },
     { name: "JavaScript", icon: "icons/javascript.svg" },
+    { name: "Typescript", icon: "icons/typescript.svg" },
     { name: "ReactJS", icon: "icons/react.svg" },
+    { name: "ReactNative", icon: "icons/reactnative.svg"},
     { name: "NextJS", icon: "icons/nextjs.svg" },
     { name: "NodeJS", icon: "icons/nodejs.svg" },
     { name: "jQuery", icon: "icons/jquery.svg" },
@@ -457,6 +541,7 @@ function Skills() {
     { name: "PHP", icon: "icons/php.svg" },
     { name: "Python", icon: "icons/python.svg" },
     { name: "Django", icon: "icons/django.svg" },
+    { name: "Flask", icon: "icons/flask.svg"},
     { name: "MySQL", icon: "icons/mysql.svg" },
     { name: "PostgreSQL", icon: "icons/postgresql.svg" },
     { name: "MongoDB", icon: "icons/mongodb.svg" },
@@ -466,6 +551,12 @@ function Skills() {
     { name: "GIT", icon: "icons/git.svg" },
     { name: "Github", icon: "icons/github.svg" },
     { name: "PowerBI", icon: "icons/powerbi.svg" },
+    { name: "PowerAutomate", icon: "icons/microsoft.svg" },
+    { name: "PowerPlatform", icon: "icons/microsoft.svg" },
+    { name: "PowerApps", icon: "icons/microsoft.svg" },
+    { name: "Azure", icon: "icons/azure.svg" },
+    { name: "OCI", icon: "icons/oci.svg" },
+    { name: "N8N", icon: "icons/n8n.svg"},
   ]
 
   return (
@@ -525,12 +616,12 @@ function Footer() {
         <div className="flex flex-wrap justify-center gap-4 mb-12">
           <ContactButton href="https://wa.me/+56936004327" icon={<PhoneCall size={20} />} text="Whatsapp" />
           <ContactButton
-            href="https://drive.google.com/file/d/10tjB8RSgfXUY3z_A5ptfZQ7nzb8duNOf/view?usp=sharing"
+            href="https://drive.google.com/file/d/1S83FzW1rJu1JCLbsmW8kb-Bf5HxfkvHL/view?usp=sharing"
             icon={<BookOpenCheck size={20} />}
             text="Curriculum Vitae"
           />
           <ContactButton
-            href="https://www.linkedin.com/in/iker-farid-castro-sanchez-830259240/"
+            href="https://www.linkedin.com/in/iker-farid-castro-s%C3%A1nchez-830259240/"
             icon={<Linkedin size={20} />}
             text="LinkedIn"
           />
