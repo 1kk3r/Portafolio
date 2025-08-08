@@ -12,8 +12,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Portafolio Iker Castro Sanchez | DevOps Jr.",
-  description: "Creado por Iker Castro Sanchez",
+  title: "Portfolio Iker Farid Cástro Sanchez | Ingeniero en Informática",
+  description: "Creado por Iker Farid Castro Sánchez",
 };
 
 export default function RootLayout({ children }) {

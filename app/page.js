@@ -1,8 +1,8 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import { motion } from "framer-motion"
-import Image from "next/image"
+import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import Image from "next/image";
 import {
   Briefcase,
   BookOpenCheck,
@@ -14,18 +14,18 @@ import {
   Linkedin,
   PhoneCall,
   ChevronRight,
-} from "lucide-react"
+} from "lucide-react";
 
 export default function Home() {
-  const [isScrolled, setIsScrolled] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20)
-    }
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <div className="min-h-screen bg-gray-50 text-gray-800">
@@ -46,7 +46,7 @@ export default function Home() {
       </motion.main>
       <Footer />
     </div>
-  )
+  );
 }
 
 function Header({ isScrolled }) {
@@ -61,18 +61,27 @@ function Header({ isScrolled }) {
     >
       <nav className="container mx-auto px-6 py-4">
         <ul className="hidden md:flex max-w-screen-md mx-auto items-center justify-center gap-8">
-          {["Sobre mi", "experiencia", "proyectos", "certificados", "skills"].map((item) => (
+          {[
+            "Sobre mi",
+            "experiencia",
+            "proyectos",
+            "certificados",
+            "skills",
+          ].map((item) => (
             <li key={item}>
               <a
                 href={`#${item}`}
                 className="text-sm hover:text-blue-600 transition-colors capitalize"
                 onClick={(e) => {
-                  e.preventDefault()
-                  const element = document.getElementById(item)
+                  e.preventDefault();
+                  const element = document.getElementById(item);
                   if (element) {
-                    const yOffset = item === "Sobre mi" ? -100 : -80
-                    const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset
-                    window.scrollTo({ top: y, behavior: "smooth" })
+                    const yOffset = item === "Sobre mi" ? -100 : -80;
+                    const y =
+                      element.getBoundingClientRect().top +
+                      window.pageYOffset +
+                      yOffset;
+                    window.scrollTo({ top: y, behavior: "smooth" });
                   }
                 }}
               >
@@ -83,12 +92,12 @@ function Header({ isScrolled }) {
         </ul>
       </nav>
     </motion.header>
-  )
+  );
 }
 
 function Sidebar() {
   return (
-    <aside className="fixed right-4 bottom-4 flex flex-col gap-6 z-20">
+    <aside className="hidden md:flex fixed right-4 bottom-4 flex-col gap-6 z-20">
       <a
         href="https://github.com/1kk3r"
         className="text-gray-600 hover:text-blue-600 transition-colors bg-white p-2 rounded-full shadow-md"
@@ -106,13 +115,13 @@ function Sidebar() {
         <Linkedin size={24} />
       </a>
     </aside>
-  )
+  );
 }
 
 function AboutMe() {
   return (
     <section id="Sobre mi" className="space-y-8 pt-20 -mt-20">
-      <div className="grid gap-3 max-w-2xl md:max-w-full md:flex md:items-center md:gap-6">
+      <div className="grid gap-3 max-w-2xl md:max-w-full md:flex md:items-center md:gap-6 text-center md:text-left">
         <div className="flex-1 max-w-2xl">
           <a
             href="https://www.linkedin.com/in/iker-farid-castro-s%C3%A1nchez-830259240/"
@@ -129,10 +138,11 @@ function AboutMe() {
             <span className="text-sky-500 font-semibold">
               Egresado de la Carrera Ingeniería en Informática.
             </span>
-            Capacitado, comprometido y con un gran interés por adquirir cada vez más conocimientos y habilidades.
+            Capacitado, comprometido y con un gran interés por adquirir cada vez
+            más conocimientos y habilidades.
           </p>
         </div>
-        <div className="flex-shrink-0 ml-44">
+        <div className="flex-shrink-0 md:ml-44 mt-6 md:mt-0 mx-auto">
           <Image
             src="/images/profile.png"
             alt="Foto de perfil"
@@ -152,27 +162,33 @@ function AboutMe() {
             Soy Iker Castro Sánchez,
             <span className="text-white">.</span>
             <span className="text-sky-500 font-semibold">
-              Ingeniero en Informática especializado en desarrollo Full-Stack y analisis de datos
+              Ingeniero en Informática especializado en desarrollo Full-Stack y
+              analisis de datos
             </span>
             <span className="text-white">.</span>
-            con experiencia en serviciosy herramientas en la nube (Azure, AWS, OCI) y conocimiento en el ecosistema de Microsoft (PowerPlatform, PowerBI, PowerAutomate).
+            con experiencia en serviciosy herramientas en la nube (Azure, AWS,
+            OCI) y conocimiento en el ecosistema de Microsoft (PowerPlatform,
+            PowerBI, PowerAutomate).
           </p>
           <p>
             <span className="text-sky-500 font-semibold">
               Durante mi formación académica y trayectoria laboral,
             </span>
             <span className="text-white">.</span>
-            he desarrollado habilidades técnicas y personales que
-            me permiten enfrentar desafíos con confianza. Me destaco por valorar el trabajo en equipo, la comunicación
-            efectiva y el compromiso con la excelencia para alcanzar objetivos en proyectos de alto impacto.
+            he desarrollado habilidades técnicas y personales que me permiten
+            enfrentar desafíos con confianza. Me destaco por valorar el trabajo
+            en equipo, la comunicación efectiva y el compromiso con la
+            excelencia para alcanzar objetivos en proyectos de alto impacto.
           </p>
           <p>
-            Además de mi pasión por la tecnología, mantengo un equilibrio entre mi vida personal y profesional. Disfruto
-            mantenerme activo físicamente asistiendo al gimnasio y practicando diversos deportes.
+            Además de mi pasión por la tecnología, mantengo un equilibrio entre
+            mi vida personal y profesional. Disfruto mantenerme activo
+            físicamente asistiendo al gimnasio y practicando diversos deportes.
             <span className="text-white">.</span>
             <span className="text-sky-500 font-semibold">
-              También soy un entusiasta de los videojuegos en línea, las series de anime y leer mangas de distintos géneros, lo que me ha
-              llevado a coleccionar figuras y posters de estos.
+              También soy un entusiasta de los videojuegos en línea, las series
+              de anime y leer mangas de distintos géneros, lo que me ha llevado
+              a coleccionar figuras y posters de estos.
             </span>
           </p>
           <blockquote className="border-l-4 border-blue-600 pl-4 italic space-y-4">
@@ -180,20 +196,22 @@ function AboutMe() {
               Mi objetivo profesional
             </span>
             <span className="text-white">.</span>
-            es contribuir de la mejor manera con mi experiencia y conocimientos al desarrollo de
-            soluciones innovadoras que mejoren la experiencia tanto en las empresas como la de los usuarios y generar
-            valor en proyectos tecnológicos.
+            es contribuir de la mejor manera con mi experiencia y conocimientos
+            al desarrollo de soluciones innovadoras que mejoren la experiencia
+            tanto en las empresas como la de los usuarios y generar valor en
+            proyectos tecnológicos.
             <span className="text-white">.</span>
             <span className="text-sky-500 font-semibold">
               Aspiro a crecer profesionalmente
             </span>
             <span className="text-white">.</span>
-            en un entorno dinámico, donde pueda seguir aprendiendo y aportando con creatividad y dedicación a este mundo gigantesco de TI.
+            en un entorno dinámico, donde pueda seguir aprendiendo y aportando
+            con creatividad y dedicación a este mundo gigantesco de TI.
           </blockquote>
         </article>
       </div>
     </section>
-  )
+  );
 }
 
 function Experience() {
@@ -218,7 +236,23 @@ function Experience() {
           }
           company="PriceWaterhouseCoopers (PwC)"
           description="Analista TI/Data en el área de Ingeniería, participando en la implementación y optimización de soluciones tecnológicas para la cartera de clientes de la firma, colaborando estrechamente con equipos multidisciplinarios para analizar y mejorar procesos tanto internos como externos, facilitando la integración de sistemas innovadores que impulsan la transformación digital."
-          skills={["PowerPlatform", "PowerBI", "PowerAutomate", "Python", "MySQL", "PostgreSQL", "Azure", "AWS", "OCI", "Google Cloud", "JavaScript", "NextJS", "NodeJS", "ReactJS", "TailwindCSS"]}
+          skills={[
+            "PowerPlatform",
+            "PowerBI",
+            "PowerAutomate",
+            "Python",
+            "MySQL",
+            "PostgreSQL",
+            "Azure",
+            "AWS",
+            "OCI",
+            "Google Cloud",
+            "JavaScript",
+            "NextJS",
+            "NodeJS",
+            "ReactJS",
+            "TailwindCSS",
+          ]}
         />
       </div>
       <div className="space-y-10">
@@ -236,7 +270,19 @@ function Experience() {
           }
           company="FACTO - Koywe"
           description="Encargado del desarrollo de la plataforma web e integración de APIs, brindando soporte completo en frontend y backend. Enfocado en la implementación de funcionalidades personalizadas orientadas a mejorar la experiencia del usuario y optimizar la eficiencia operativa. Comprometido con buenas prácticas de desarrollo, escalabilidad del sistema y mejora continua."
-          skills={["PHP", "jQuery", "XML", "MySQL", "Google Analytics", "TailwindCSS", "NextJS", "NodeJS", "Supabase", "AWS", "Python"]}
+          skills={[
+            "PHP",
+            "jQuery",
+            "XML",
+            "MySQL",
+            "Google Analytics",
+            "TailwindCSS",
+            "NextJS",
+            "NodeJS",
+            "Supabase",
+            "AWS",
+            "Python",
+          ]}
         />
       </div>
       <div className="space-y-6">
@@ -285,7 +331,7 @@ function ExperienceItem({ date, title, company, description, skills }) {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 function Projects() {
@@ -300,8 +346,8 @@ function Projects() {
     "images/rms/rms7.png",
     "images/rms/rms8.png",
     "images/rms/rms9.png",
-    "images/rms/rms10.png"
-  ]; // Agrega las rutas de tus imágenes
+    "images/rms/rms10.png",
+  ];
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
@@ -318,18 +364,18 @@ function Projects() {
         Proyectos
       </h3>
       <div className="space-y-12">
-
-        <article className="grid lg:grid-cols-2 items-center gap-8 p-6 rounded-lg shadow-md ring-1 ring-white/20">
-
+        <article className="grid gap-8 lg:grid-cols-2 p-6 rounded-lg shadow-md ring-1 ring-white/20">
           <div className="flex flex-col gap-6">
             <div className="flex flex-col gap-3">
               <h3 className="text-2xl font-semibold text-blue-600">
                 Real Stock Manager || Proyecto de Título
               </h3>
               <p className="text-base leading-relaxed text-gray-800">
-                Sitio web orientado para tiendas de retail el cual cuenta con gestión de inventario e-commerce
-                con SDK de Transbank y Mercadopago para la venta de los mismos, lista de tareas de reposición
-                y Gemini IA implementado para predicción de tendencias basado en ventas.
+                Sitio web orientado para tiendas de retail el cual cuenta con
+                gestión de inventario e-commerce con SDK de Transbank y
+                Mercadopago para la venta de los mismos, lista de tareas de
+                reposición y Gemini IA implementado para predicción de
+                tendencias basado en ventas.
               </p>
             </div>
 
@@ -345,14 +391,18 @@ function Projects() {
             </div>
 
             <div>
-              <ContactButton href="https://github.com/1kk3r/RMS-main.git" icon={<Github size={20} />} text="Ver en GitHub" />
+              <ContactButton
+                href="https://github.com/1kk3r/RMS-main.git"
+                icon={<Github size={20} />}
+                text="Ver en GitHub"
+              />
             </div>
           </div>
 
-          <div className="w-full max-w-lg mx-auto rounded-lg shadow-lg overflow-hidden">
+          <div className="w-full max-w-lg mx-auto h-100 md:h-150 rounded-lg shadow-lg overflow-hidden">
             <img
               loading="lazy"
-              className="w-full"
+              className="w-full h-full object-cover"
               src={images[currentIndex]}
               alt={`Imagen ${currentIndex + 1}`}
             />
@@ -415,7 +465,7 @@ function Certificates() {
           description="Liceo Técnico Eliodoro García Zegers."
         />
       </div>
-            <div className="space-y-12">
+      <div className="space-y-12">
         <CertificadosItem
           title={
             <a
@@ -430,7 +480,7 @@ function Certificates() {
           description="ORACLE"
         />
       </div>
-            <div className="space-y-12">
+      <div className="space-y-12">
         <CertificadosItem
           title={
             <a
@@ -509,7 +559,6 @@ function Certificates() {
   );
 }
 
-
 function CertificadosItem({ title, description }) {
   return (
     <div className="relative pl-8 before:absolute before:left-0 before:top-0 before:h-full before:w-px before:bg-green-200">
@@ -522,7 +571,7 @@ function CertificadosItem({ title, description }) {
         <span className="text-lg text-gray-600">{description}</span>
       </div>
     </div>
-  )
+  );
 }
 
 function Skills() {
@@ -532,7 +581,7 @@ function Skills() {
     { name: "JavaScript", icon: "icons/javascript.svg" },
     { name: "Typescript", icon: "icons/typescript.svg" },
     { name: "ReactJS", icon: "icons/react.svg" },
-    { name: "ReactNative", icon: "icons/reactnative.svg"},
+    { name: "ReactNative", icon: "icons/reactnative.svg" },
     { name: "NextJS", icon: "icons/nextjs.svg" },
     { name: "NodeJS", icon: "icons/nodejs.svg" },
     { name: "jQuery", icon: "icons/jquery.svg" },
@@ -541,7 +590,7 @@ function Skills() {
     { name: "PHP", icon: "icons/php.svg" },
     { name: "Python", icon: "icons/python.svg" },
     { name: "Django", icon: "icons/django.svg" },
-    { name: "Flask", icon: "icons/flask.svg"},
+    { name: "Flask", icon: "icons/flask.svg" },
     { name: "MySQL", icon: "icons/mysql.svg" },
     { name: "PostgreSQL", icon: "icons/postgresql.svg" },
     { name: "MongoDB", icon: "icons/mongodb.svg" },
@@ -556,8 +605,8 @@ function Skills() {
     { name: "PowerApps", icon: "icons/microsoft.svg" },
     { name: "Azure", icon: "icons/azure.svg" },
     { name: "OCI", icon: "icons/oci.svg" },
-    { name: "N8N", icon: "icons/n8n.svg"},
-  ]
+    { name: "N8N", icon: "icons/n8n.svg" },
+  ];
 
   return (
     <section id="skills" className="grid gap-6 scroll-mt-20">
@@ -588,13 +637,20 @@ function Skills() {
             }}
             className="p-6 flex flex-col items-center gap-4 rounded-lg bg-white shadow-md hover:shadow-lg transition-all duration-300"
           >
-            <Image src={skill.icon || "/placeholder.svg"} alt={`${skill.name} icon`} width={48} height={48} />
-            <span className="text-sm text-center text-gray-700">{skill.name}</span>
+            <Image
+              src={skill.icon || "/placeholder.svg"}
+              alt={`${skill.name} icon`}
+              width={48}
+              height={48}
+            />
+            <span className="text-sm text-center text-gray-700">
+              {skill.name}
+            </span>
           </motion.li>
         ))}
       </motion.ul>
     </section>
-  )
+  );
 }
 
 function Footer() {
@@ -602,7 +658,9 @@ function Footer() {
     <footer className="bg-gray-100 py-16 mt-28">
       <div className="max-w-screen-xl mx-auto px-6 text-center">
         <div className="space-y-4 mb-8">
-          <h2 className="text-4xl font-bold tracking-tight text-gray-800">¿Te gustaría contactarme?</h2>
+          <h2 className="text-4xl font-bold tracking-tight text-gray-800">
+            ¿Te gustaría contactarme?
+          </h2>
           <p className="text-xl">
             <a
               href="mailto:ikerfaridc@gmail.com"
@@ -614,7 +672,11 @@ function Footer() {
         </div>
 
         <div className="flex flex-wrap justify-center gap-4 mb-12">
-          <ContactButton href="https://wa.me/+56936004327" icon={<PhoneCall size={20} />} text="Whatsapp" />
+          <ContactButton
+            href="https://wa.me/+56936004327"
+            icon={<PhoneCall size={20} />}
+            text="Whatsapp"
+          />
           <ContactButton
             href="https://drive.google.com/file/d/1S83FzW1rJu1JCLbsmW8kb-Bf5HxfkvHL/view?usp=sharing"
             icon={<BookOpenCheck size={20} />}
@@ -626,10 +688,12 @@ function Footer() {
             text="LinkedIn"
           />
         </div>
-        <span className="text-sm text-gray-600">Desarrollado por Iker Farid Castro Sánchez, Enero del 2025.</span>
+        <span className="text-sm text-gray-600">
+          Desarrollado por Iker Farid Castro Sánchez, Enero del 2025.
+        </span>
       </div>
     </footer>
-  )
+  );
 }
 
 function ContactButton({ href, icon, text }) {
@@ -645,5 +709,5 @@ function ContactButton({ href, icon, text }) {
       {icon}
       {text}
     </motion.a>
-  )
+  );
 }
