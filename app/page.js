@@ -136,8 +136,9 @@ function AboutMe() {
           </h1>
           <p className="text-xl text-gray-600 mt-2">
             <span className="text-sky-500 font-semibold">
-              Egresado de la Carrera Ingeniería en Informática.
+              Titulado de la Carrera Ingeniería en Informática.
             </span>
+            <span className="text-white">.</span>
             Capacitado, comprometido y con un gran interés por adquirir cada vez
             más conocimientos y habilidades.
           </p>
@@ -163,12 +164,16 @@ function AboutMe() {
             <span className="text-white">.</span>
             <span className="text-sky-500 font-semibold">
               Ingeniero en Informática especializado en desarrollo Full-Stack y
-              analisis de datos
+              análisis de datos
             </span>
             <span className="text-white">.</span>
-            con experiencia en serviciosy herramientas en la nube (Azure, AWS,
-            OCI) y conocimiento en el ecosistema de Microsoft (PowerPlatform,
-            PowerBI, PowerAutomate).
+            con experiencia en servicios y herramientas en la nube (Azure, AWS,
+            OCI) con conocimiento en el ecosistema de Microsoft (PowerPlatform,
+            PowerBI, PowerAutomate). He formado parte de distintos proyectos y
+            licitaciones desarrollando soluciones tecnológicas, innovadoras y
+            generando alto valor al desarrollar requerimientos y mejoras
+            continuas, demostrando el compromiso tanto con el cliente como con
+            el usuario ejecutor.
           </p>
           <p>
             <span className="text-sky-500 font-semibold">
@@ -176,19 +181,20 @@ function AboutMe() {
             </span>
             <span className="text-white">.</span>
             he desarrollado habilidades técnicas y personales que me permiten
-            enfrentar desafíos con confianza. Me destaco por valorar el trabajo
-            en equipo, la comunicación efectiva y el compromiso con la
-            excelencia para alcanzar objetivos en proyectos de alto impacto.
+            enfrentar desafíos con confianza y sólidos conocimientos. Me destaco
+            por valorar el trabajo en equipo, la comunicación efectiva y el
+            compromiso con la excelencia para alcanzar objetivos en proyectos de
+            alto impacto, compartiendo e incentivando al equipo a alcanzar un
+            mismo objetivo.
           </p>
           <p>
             Además de mi pasión por la tecnología, mantengo un equilibrio entre
             mi vida personal y profesional. Disfruto mantenerme activo
-            físicamente asistiendo al gimnasio y practicando diversos deportes.
+            físicamente practicando diversos deportes.
             <span className="text-white">.</span>
             <span className="text-sky-500 font-semibold">
               También soy un entusiasta de los videojuegos en línea, las series
-              de anime y leer mangas de distintos géneros, lo que me ha llevado
-              a coleccionar figuras y posters de estos.
+              de anime y leer mangas de distintos géneros.
             </span>
           </p>
           <blockquote className="border-l-4 border-blue-600 pl-4 italic space-y-4">
@@ -205,8 +211,11 @@ function AboutMe() {
               Aspiro a crecer profesionalmente
             </span>
             <span className="text-white">.</span>
-            en un entorno dinámico, donde pueda seguir aprendiendo y aportando
-            con creatividad y dedicación a este mundo gigantesco de TI.
+            en un entorno dinámico, donde pueda seguir creciendo y aportando de
+            una manera funcional y lograr generar un impacto positivo a través
+            de mi desempeño, empleando distintas herramientas y tecnologías, y
+            consolidar un equipo que genere alto valor a los clientes y
+            usuarios.
           </blockquote>
         </article>
       </div>
@@ -336,79 +345,199 @@ function ExperienceItem({ date, title, company, description, skills }) {
 
 function Projects() {
   const images = [
-    "images/rms/rms.png",
-    "images/rms/rms1.png",
-    "images/rms/rms2.png",
-    "images/rms/rms3.png",
-    "images/rms/rms4.png",
-    "images/rms/rms5.png",
-    "images/rms/rms6.png",
-    "images/rms/rms7.png",
-    "images/rms/rms8.png",
-    "images/rms/rms9.png",
-    "images/rms/rms10.png",
+    "/images/rms/rms.png",
+    "/images/rms/rms1.png",
+    "/images/rms/rms2.png",
+    "/images/rms/rms3.png",
+    "/images/rms/rms4.png",
+    "/images/rms/rms5.png",
+    "/images/rms/rms6.png",
+    "/images/rms/rms7.png",
+    "/images/rms/rms8.png",
+    "/images/rms/rms9.png",
+    "/images/rms/rms10.png",
   ];
+
+  const images1 = [
+    "/images/cge/PA1.png",
+    "/images/cge/PA2.png",
+    "/images/cge/PA3.png",
+    "/images/cge/PA4.png",
+    "/images/cge/PA5.png",
+    "/images/cge/PA6.png",
+    "/images/cge/PA7.png",
+  ];
+
+  const images2 = [
+    "/images/scotiabank/PB1.png",
+    "/images/scotiabank/PB2.png",
+    "/images/scotiabank/PB3.png",
+    "/images/scotiabank/PB4.png",
+    "/images/scotiabank/PB5.png",
+  ];
+
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [fade, setFade] = useState(true);
+
+  const maxLength = Math.max(images.length, images1.length, images2.length);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 2000); // Cambia cada 2 segundos
+      setFade(false); // inicia fade out
+      setTimeout(() => {
+        setCurrentIndex((prev) => (prev + 1) % maxLength);
+        setFade(true); // fade in
+      }, 300); // tiempo del fade out antes del cambio
+    }, 2000);
 
-    return () => clearInterval(interval); // Limpia el intervalo al desmontar el componente
-  }, [images.length]);
+    return () => clearInterval(interval);
+  }, [maxLength]);
+
+  // Mostrar última imagen si la galería es más corta
+  const getImage = (arr) => {
+    if (currentIndex < arr.length) {
+      return arr[currentIndex];
+    }
+    return arr[arr.length - 1];
+  };
+
   return (
     <section id="proyectos" className="grid gap-8 scroll-mt-20">
       <h3 className="text-3xl font-bold mb-12 flex items-center gap-3 text-gray-800">
         <CodeXml size={38} className="text-blue-600" />
         Proyectos
       </h3>
-      <div className="space-y-12">
-        <article className="grid gap-8 lg:grid-cols-2 p-6 rounded-lg shadow-md ring-1 ring-white/20">
-          <div className="flex flex-col gap-6">
-            <div className="flex flex-col gap-3">
-              <h3 className="text-2xl font-semibold text-blue-600">
-                Real Stock Manager || Proyecto de Título
-              </h3>
-              <p className="text-base leading-relaxed text-gray-800">
-                Sitio web orientado para tiendas de retail el cual cuenta con
-                gestión de inventario e-commerce con SDK de Transbank y
-                Mercadopago para la venta de los mismos, lista de tareas de
-                reposición y Gemini IA implementado para predicción de
-                tendencias basado en ventas.
-              </p>
-            </div>
 
-            <div className="flex flex-wrap gap-2">
-              {["NextJS", "NodeJS", "TailwindCSS", "Supabase"].map((tech) => (
+      {/* Proyecto 1 */}
+      <article className="grid gap-8 lg:grid-cols-2 p-6 rounded-lg shadow-md ring-1 ring-white/20">
+        <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-3">
+            <h3 className="text-2xl font-semibold text-blue-600">
+              Real Stock Manager, Proyecto de Título
+            </h3>
+            <p className="text-base leading-relaxed text-gray-800">
+              Sitio web orientado para tiendas de retail el cual cuenta con
+              gestión de inventario e-commerce con SDK de Transbank y
+              Mercadopago, lista de tareas y API GeminiAI implementado para
+              predicción de tendencias basado en ventas históricas y
+              actualización de stock con sugerencias de productos.
+            </p>
+          </div>
+
+          <div className="flex flex-wrap gap-2">
+            {["NextJS", "NodeJS", "TailwindCSS", "Supabase"].map((tech) => (
+              <span
+                key={tech}
+                className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm border border-blue-200"
+              >
+                {tech}
+              </span>
+            ))}
+          </div>
+
+          <div>
+            <ContactButton
+              href="https://github.com/1kk3r/RMS-main.git"
+              icon={<Github size={20} />}
+              text="Ver en GitHub"
+            />
+          </div>
+        </div>
+
+        <div className="w-full max-w-lg mx-auto h-100 md:h-150 rounded-lg shadow-lg overflow-hidden">
+          <img
+            loading="lazy"
+            className={`w-full h-full object-cover transition-opacity duration-500 ${
+              fade ? "opacity-100" : "opacity-0"
+            }`}
+            src={getImage(images)}
+            alt={`Imagen ${currentIndex + 1}`}
+          />
+        </div>
+      </article>
+
+      {/* Proyecto 2 */}
+      <article className="grid gap-8 lg:grid-cols-2 p-6 rounded-lg shadow-md ring-1 ring-white/20">
+        <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-3">
+            <h3 className="text-2xl font-semibold text-blue-600">
+              PowerApps Gestión Interna, CGE
+            </h3>
+            <p className="text-base leading-relaxed text-gray-800">
+              Plataforma interna de gestión y organización para envío de
+              comunicados, flujos de trabajo, envío de email por Active
+              Directory, registro de evolutivos, peticiones automatizadas, etc.;
+              procesos internos para mejorar la eficiencia y productividad
+              interna y externa de la empresa.
+            </p>
+          </div>
+
+          <div className="flex flex-wrap gap-2">
+            {["PowerPlatforms", "PowerApps", "PowerAutomate", "SharePoint"].map(
+              (tech) => (
                 <span
                   key={tech}
                   className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm border border-blue-200"
                 >
                   {tech}
                 </span>
-              ))}
-            </div>
+              )
+            )}
+          </div>
+        </div>
 
-            <div>
-              <ContactButton
-                href="https://github.com/1kk3r/RMS-main.git"
-                icon={<Github size={20} />}
-                text="Ver en GitHub"
-              />
-            </div>
+        <div className="w-full max-w-lg mx-auto h-100 md:h-150 rounded-lg shadow-lg overflow-hidden">
+          <img
+            loading="lazy"
+            className={`w-full h-full object-cover transition-opacity duration-500 ${
+              fade ? "opacity-100" : "opacity-0"
+            }`}
+            src={getImage(images1)}
+            alt={`Imagen ${currentIndex + 1}`}
+          />
+        </div>
+      </article>
+
+      {/* Proyecto 3 */}
+      <article className="grid gap-8 lg:grid-cols-2 p-6 rounded-lg shadow-md ring-1 ring-white/20">
+        <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-3">
+            <h3 className="text-2xl font-semibold text-blue-600">
+              PowerBi Dashboard KPI's, NUAM
+            </h3>
+            <p className="text-base leading-relaxed text-gray-800">
+              Dashboard interactivo para monitoreo de KPIs en tiempo real,
+              basado en datos internos cargados por los mismos usuarios para
+              generar reportes y análisis de rendimiento, facilitando la toma de
+              decisiones estratégicas para Scotiabank.
+            </p>
           </div>
 
-          <div className="w-full max-w-lg mx-auto h-100 md:h-150 rounded-lg shadow-lg overflow-hidden">
-            <img
-              loading="lazy"
-              className="w-full h-full object-cover"
-              src={images[currentIndex]}
-              alt={`Imagen ${currentIndex + 1}`}
-            />
+          <div className="flex flex-wrap gap-2">
+            {["PowerPlatforms", "PowerBi", "SharePoint", "PostgreSQL"].map(
+              (tech) => (
+                <span
+                  key={tech}
+                  className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm border border-blue-200"
+                >
+                  {tech}
+                </span>
+              )
+            )}
           </div>
-        </article>
-      </div>
+        </div>
+
+        <div className="w-full max-w-lg mx-auto h-100 md:h-150 rounded-lg shadow-lg overflow-hidden">
+          <img
+            loading="lazy"
+            className={`w-full h-full object-cover transition-opacity duration-500 ${
+              fade ? "opacity-100" : "opacity-0"
+            }`}
+            src={getImage(images2)}
+            alt={`Imagen ${currentIndex + 1}`}
+          />
+        </div>
+      </article>
     </section>
   );
 }
@@ -549,7 +678,7 @@ function Certificates() {
               rel="noopener noreferrer"
               className="text-green-500 hover:text-green-700"
             >
-              Diseño Ágil de Sitemas SCRUM.
+              Diseño Ágil de Sistemas SCRUM.
             </a>
           }
           description="Instituto Profesional INACAP."
