@@ -387,8 +387,8 @@ function Projects() {
       setTimeout(() => {
         setCurrentIndex((prev) => (prev + 1) % maxLength);
         setFade(true); // fade in
-      }, 300); // tiempo del fade out antes del cambio
-    }, 2000);
+      }, 400); // tiempo del fade out antes del cambio
+    }, 3000);
 
     return () => clearInterval(interval);
   }, [maxLength]);
