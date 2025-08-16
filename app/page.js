@@ -145,7 +145,7 @@ function AboutMe() {
         </div>
         <div className="flex-shrink-0 md:ml-44 mt-6 md:mt-0 mx-auto">
           <Image
-            src="/images/profile.png"
+            src="images/profile.png"
             alt="Foto de perfil"
             width={200}
             height={200}
@@ -345,35 +345,35 @@ function ExperienceItem({ date, title, company, description, skills }) {
 
 function Projects() {
   const images = [
-    "/images/rms/rms.png",
-    "/images/rms/rms1.png",
-    "/images/rms/rms2.png",
-    "/images/rms/rms3.png",
-    "/images/rms/rms4.png",
-    "/images/rms/rms5.png",
-    "/images/rms/rms6.png",
-    "/images/rms/rms7.png",
-    "/images/rms/rms8.png",
-    "/images/rms/rms9.png",
-    "/images/rms/rms10.png",
+    "images/rms/rms.png",
+    "images/rms/rms1.png",
+    "images/rms/rms2.png",
+    "images/rms/rms3.png",
+    "images/rms/rms4.png",
+    "images/rms/rms5.png",
+    "images/rms/rms6.png",
+    "images/rms/rms7.png",
+    "images/rms/rms8.png",
+    "images/rms/rms9.png",
+    "images/rms/rms10.png",
   ];
 
   const images1 = [
-    "/images/cge/PA1.png",
-    "/images/cge/PA2.png",
-    "/images/cge/PA3.png",
-    "/images/cge/PA4.png",
-    "/images/cge/PA5.png",
-    "/images/cge/PA6.png",
-    "/images/cge/PA7.png",
+    "images/cge/PA1.png",
+    "images/cge/PA2.png",
+    "images/cge/PA3.png",
+    "images/cge/PA4.png",
+    "images/cge/PA5.png",
+    "images/cge/PA6.png",
+    "images/cge/PA7.png",
   ];
 
   const images2 = [
-    "/images/scotiabank/PB1.png",
-    "/images/scotiabank/PB2.png",
-    "/images/scotiabank/PB3.png",
-    "/images/scotiabank/PB4.png",
-    "/images/scotiabank/PB5.png",
+    "images/scotiabank/PB1.png",
+    "images/scotiabank/PB2.png",
+    "images/scotiabank/PB3.png",
+    "images/scotiabank/PB4.png",
+    "images/scotiabank/PB5.png",
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
